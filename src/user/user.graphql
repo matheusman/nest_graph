@@ -1,0 +1,8 @@
+type Query {
+  _isEmpty: Boolean!
+  user: User!
+}
+
+type User {
+  name: String!
+}

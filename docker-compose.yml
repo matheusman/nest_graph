@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  db:
+    image: postgres
+    container_name: "prisma_nest_graph"
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ~/postgres/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: postgres
+      POSTGRES_DB: nest_prisma
+  node_nest:
+    build: .
+    container_name: "node_nest"
+    volumes:
+      - .:/usr/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    
